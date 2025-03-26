@@ -1,0 +1,93 @@
+// Animal-Dog-Cat inheritance example for CodeLense visualizer
+
+class Animal {
+    private String name;
+    private int age;
+    
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+    
+    public String getInfo() {
+        return name + " is " + age + " years old";
+    }
+}
+
+class Dog extends Animal {
+    private String breed;
+    
+    public Dog(String name, int age, String breed) {
+        super(name, age);
+        this.breed = breed;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("Woof! Woof!");
+    }
+    
+    public void fetch() {
+        System.out.println("Dog is fetching the ball");
+    }
+    
+    @Override
+    public String getInfo() {
+        return super.getInfo() + " and is a " + breed;
+    }
+}
+
+class Cat extends Animal {
+    private String color;
+    
+    public Cat(String name, int age, String color) {
+        super(name, age);
+        this.color = color;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("Meow!");
+    }
+    
+    public void purr() {
+        System.out.println("Cat is purring");
+    }
+    
+    @Override
+    public String getInfo() {
+        return super.getInfo() + " and is " + color + " in color";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create objects
+        Dog dog = new Dog("Rex", 3, "German Shepherd");
+        Cat cat = new Cat("Whiskers", 2, "Gray");
+        
+        // Call methods to demonstrate inheritance and polymorphism
+        System.out.println("Dog info: " + dog.getInfo());
+        dog.makeSound();
+        dog.fetch();
+        
+        System.out.println("\nCat info: " + cat.getInfo());
+        cat.makeSound();
+        cat.purr();
+        
+        // Demonstrate polymorphism
+        System.out.println("\nDemonstrating polymorphism:");
+        Animal animal1 = dog;
+        Animal animal2 = cat;
+        
+        System.out.println(animal1.getInfo());
+        animal1.makeSound();
+        
+        System.out.println(animal2.getInfo());
+        animal2.makeSound();
+    }
+}
